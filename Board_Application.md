@@ -1,32 +1,32 @@
-# fNIRS 보드 지원서 (Board Application)
+# fNIRS 보드 지원서 (Board Application) - 디벨롭 버전(V2)
 
 ### 1. Title of your idea
-**OpenNIRScap: Open-Source Wearable fNIRS Brain-Interface for Social Assistance Robots** 
+**OpenNIRScap V2: Wireless, Edge-AI Powered Multi-modal BCI for Social Assistance Robots** 
 
 ### 2. Which scenario will your solution address?
 **Robotics - Social Assistance Robot**
 
 ### 3. What are you going to build?
-We will build an accessible, ergonomic functional Near-Infrared Spectroscopy (fNIRS) cap and system. This system will include 24 custom sensor modules and dual-wavelength LEDs, integrated with a low-power microcontroller (STM32/Arduino) to acquire real-time brain blood oxygenation data. This cap will act as a Brain-Computer Interface (BCI) wearable to control or communicate with a social assistance robot.
+We will build an advanced, fully-wireless functional Near-Infrared Spectroscopy (fNIRS) cap. Building upon the original OpenNIRScap design, V2 will introduce an upgraded microcontroller (such as an ESP32 or specialized Arduino board) for BLE/Wi-Fi streaming, an integrated IMU (Inertial Measurement Unit) to cancel out head motion artifacts, and flexible PCBs (FPCBs) for superior scalp conformity. This cap will act as a high-precision, low-latency BCI wearable enabling users with motor disabilities to control a social assistance robot.
 
 ### 4. How does your solution work? What are the main features?
-The system utilizes near-infrared light (660 nm & 990 nm) to measure changes in blood oxygenation in the brain, reflecting neural activity (modified Beer-Lambert Law). 
-**Main features include:** 
-- Synthesized control of 24 detectors and 8 emitters via a central microcontroller unit (ECU).
-- Ergonomic mechanical cap design for comfortable, long-term wear.
-- Real-time communication and an interactive Python-based GUI for data visualization and robot command mapping.
+The system utilizes near-infrared light (660 nm & 990 nm) to measure neural activity by tracking blood oxygenation changes.
+**Main upgraded features include:** 
+- **Fully Wireless Operation:** Tether-free data acquisition via Bluetooth/Wi-Fi to a host device or cloud.
+- **Multi-Modal Sensor Fusion:** An onboard IMU dynamically tracks and subtracts motion-induced noise from the fNIRS signals to ensure medical-grade accuracy even when the user moves.
+- **Flexible PCB (FPCB) Modules:** Replacing rigid boards with FPCBs ensures perfect ergonomic fit across different head shapes, directly improving optical signal quality.
 
 ### 5. Will your project focus on sustainable solutions? How?
-Yes. Traditional fNIRS systems are extremely expensive, bulky, and energy-consuming. Our project focuses on sustainability by utilizing a low-power microcontroller (e.g., STM32L476RET6 or supported Arduino boards) to minimize energy consumption. Furthermore, the open-source hardware approach allows users to repair, upgrade, and 3D-print parts individually, significantly extending the product’s lifecycle and reducing e-waste.
+Yes. We will use a highly efficient edge-computing microcontroller to eliminate the energy consumption required to constantly stream raw data to a heavy external PC. Furthermore, by releasing the flexible node designs and housing as open-source hardware, we allow users to repair or replace only individual faulty nodes through 3D printing and component swapping, drastically extending product lifespan and minimizing e-waste.
 
 ### 6. Briefly explain your user experience. How intuitive and user-friendly is your solution? Can it be easily integrated into existing systems or workflows?
-The user simply wears the ergonomic cap like a standard hat, avoiding the messy conductive gels required by traditional EEG caps. The raw brain data is instantly translated into intuitive graphs via the interactive GUI and mapped to simple output commands (e.g., Yes/No, Move forward) for the social robot. Its Python-based backend natively supports seamless integration into existing ROS (Robot Operating System) workflows or healthcare monitoring setups.
+The transition to a fully wireless, FPCB-based cap completely removes cable tangles, allowing the user to simply wear it like a lightweight beanie. Without being tethered to a computer, users experience maximum freedom. Caregivers and engineers can seamlessly integrate the cap into existing Robot Operating System (ROS) workflows because the device can output clean, finalized motion-intent commands directly over the local network. 
 
 ### 7. Consider the scalability of your project. How can it be expanded to serve a larger audience or be applied in different contexts?
-The modular and open-source nature makes it highly scalable. The number of nodes can be adjusted to fit different head sizes (from children to adults) or targeted brain regions. Beyond social robots, the framework can be easily expanded to the "Gaming - Mixed-Reality" scenario for mind-controlled gaming, or integrated with wireless modules (Wi-Fi/BLE) for remote tele-medicine and personal health tracking.
+The modular wireless architecture allows the network to scale infinitely—users can snap on more sensors for a full-brain scan or reduce them to a simple headband for daily focus tracking. Because the added IMU actively filters out motion noise, this project can scale beyond static wheelchair use into highly active scenarios, such as "Gaming - Mixed-Reality" applications, sports performance tracking, or ambulatory stroke rehabilitation.
 
 ### 8. How will you use App Lab in your project?
-We will use App Lab to create a mobile-friendly dashboard. The brain activity data and the social robot's status will be sent to the App Lab interface via Wi-Fi/Bluetooth. This allows caregivers or researchers to remotely monitor the user's cognitive state and the robot's responses in real-time from any smart device.
+We will utilize App Lab to deploy a real-time, cross-platform mobile dashboard. Data processed by the cap will be pushed to the Arduino Cloud/App Lab. This allows caregivers and family members to remotely monitor the user's cognitive workload, stress levels, and the social robot's current task status via their smartphones, ensuring safety and continuous care from anywhere in the world.
 
 ### 9. How will you integrate AI in your project?
-The raw fNIRS data contains complex blood flow patterns that vary per individual. We will integrate Machine Learning (AI) classification models to process this raw sequential data. By training the AI on user-specific brain patterns, the system will accurately decode the user's focus, fatigue levels, or specific motion intentions, translating human thoughts into precise, autonomous actions for the social assistance robot.
+Instead of relying on a centralized PC, we will integrate **TinyML (Edge AI)** directly into the cap's microcontroller. We will train lightweight neural networks to locally process the complex, multi-modal fNIRS and IMU data. This means the cap itself will classify human intentions, cognitive fatigue, and emotional states instantaneously at the edge. By removing the data transmission bottleneck, this TinyML approach ensures virtually zero latency when sending thought-commands to the social assistance robot.
